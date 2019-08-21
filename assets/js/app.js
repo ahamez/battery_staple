@@ -10,6 +10,7 @@ import css from "../css/app.css"
 // Import dependencies
 //
 import "phoenix_html"
+import ClipboardJS from "clipboard"
 
 // Import local files
 //
@@ -17,6 +18,8 @@ import "phoenix_html"
 // import socket from "./socket"
 
 import LiveSocket from "phoenix_live_view"
+
+new ClipboardJS('.btn');
 
 let liveSocket = new LiveSocket("/live")
 liveSocket.connect()

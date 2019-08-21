@@ -47,6 +47,7 @@ USER nobody
 
 EXPOSE 4001
 
-# docker run -p 4001:4001 -e SECRET_KEY_BASE battery-staple
+# docker run -p 4001:4001 -e SECRET_KEY_BASE=$(SECRET_KEY_BASE) battery_staple
+# docker run -it -p 4001:4001 -e SECRET_KEY_BASE=$(SECRET_KEY_BASE) battery_staple start_iex
 ENTRYPOINT ["./bin/battery_staple"]
 CMD ["start"]

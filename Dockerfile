@@ -1,7 +1,7 @@
 FROM elixir:1.9.1-alpine as build
 
 # install build dependencies
-RUN apk add --update git build-base nodejs yarn python npm
+RUN apk add --update git build-base nodejs npm
 
 # prepare build dir
 RUN mkdir /app
@@ -36,7 +36,7 @@ RUN mix release
 
 # # prepare release image
 FROM alpine:3.9 AS app
-RUN apk add --update bash openssl
+RUN apk add --update bash
 
 RUN mkdir /app
 WORKDIR /app

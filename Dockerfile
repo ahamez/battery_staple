@@ -45,6 +45,7 @@ COPY --from=build /app/_build/prod/rel/battery_staple ./
 RUN chown -R nobody: /app
 USER nobody
 
+EXPOSE 4001
 
 # docker run -p 4001:4001 -e SECRET_KEY_BASE battery-staple
 ENTRYPOINT ["./bin/battery_staple"]

@@ -8,7 +8,7 @@ RUN mkdir /app
 WORKDIR /app
 
 # install hex + rebar
-RUN mix local.hex --force && \
+RUN mix local.hex --force &&\
     mix local.rebar --force
 
 # set build ENV
@@ -17,22 +17,21 @@ ENV MIX_ENV=prod
 # install mix dependencies
 COPY mix.exs mix.lock ./
 COPY config config
-RUN mix deps.get
-RUN mix deps.compile
+RUN mix deps.get &&\
+    mix deps.compile
 
 # build assets
 COPY assets assets
 RUN cd assets && npm install && npm run deploy
 RUN mix phx.digest
 
-# build project
+# build and release project
 COPY priv priv
 COPY lib lib
 COPY en_basic.txt en_basic.txt
-RUN mix compile
+RUN mix compile &&\
+    mix release
 
-# build release
-RUN mix release
 
 # # prepare release image
 FROM alpine:3.9 AS app

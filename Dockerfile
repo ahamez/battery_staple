@@ -33,7 +33,7 @@ RUN mix phx.digest
 # build and release project
 COPY priv priv
 COPY lib lib
-COPY en_basic.txt en_basic.txt
+COPY dicts dicts
 RUN mix compile &&\
     mix release
 

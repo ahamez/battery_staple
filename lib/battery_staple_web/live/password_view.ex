@@ -18,8 +18,8 @@ defmodule BatteryStapleWeb.PasswordView do
     {:noreply, assign(socket, password: generate_password(length), length: length)}
   end
 
-  def handle_event("gen_passwd", value, socket) do
-    {:noreply, assign(socket, password: generate_password(value))}
+  def handle_event("gen_passwd", _value, socket) do
+    {:noreply, assign(socket, password: generate_password(socket.assigns.length))}
   end
 
   defp generate_password(length) do

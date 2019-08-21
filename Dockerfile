@@ -32,6 +32,7 @@ COPY en_basic.txt en_basic.txt
 RUN mix compile &&\
     mix release
 
+###################################################################
 
 # # prepare release image
 FROM alpine:3.9 AS app
@@ -40,9 +41,11 @@ RUN apk add --update bash
 RUN mkdir /app
 WORKDIR /app
 
-COPY --from=build /app/_build/prod/rel/battery_staple ./app
+COPY --from=build /app/_build/prod/rel/battery_staple ./
 RUN chown -R nobody: /app
 USER nobody
 
-CMD ["./app/bin/battery_staple", "start"]
+
 # docker run -p 4001:4001 -e SECRET_KEY_BASE battery-staple
+ENTRYPOINT ["./bin/battery_staple"]
+CMD ["start"]

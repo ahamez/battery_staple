@@ -16,7 +16,7 @@ defmodule BatteryStaple.PasswordGenerator do
     fr: {LoadDictionnary.load("dicts/fr_basic.txt"), "Français", "🇫🇷"}
   }
 
-  def generate_password(nb_words, separator \\ "-", dicts \\ [:en]) do
+  def generate_password(nb_words, dicts \\ [:en], separator \\ "-") do
     Enum.map_join(1..max(1, nb_words), separator, fn _ -> "#{get_word(dicts)}" end)
   end
 
@@ -28,5 +28,6 @@ defmodule BatteryStaple.PasswordGenerator do
     |> Enum.random()
   end
 
-  defp get_dict(lang), do: (@dicts())[lang]
+  def get_dicts(), do: @dicts
+  defp get_dict(lang), do: get_dicts()[lang]
 end

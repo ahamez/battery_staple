@@ -5,16 +5,7 @@ defmodule BatteryStapleWeb.PasswordView do
   @initial_length 4
 
   def render(assigns) do
-    ~L"""
-      <%= @password %>
-      <form phx-change="update_length">
-        <input type="range" min="3" max="10" name="length" value="<%= @length %>" />
-      </form>
-      <%= @length %>
-      <div>
-        <button phx-click="gen_passwd" value="<%= @length %>">Generate new password</button>
-      </div>
-    """
+    BatteryStapleWeb.PageView.render("password.html", assigns)
   end
 
 

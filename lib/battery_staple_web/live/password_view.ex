@@ -2,7 +2,7 @@ defmodule BatteryStapleWeb.PasswordView do
   require Logger
   use Phoenix.LiveView
 
-  @initial_length 4
+  @initial_length "4"
 
   def render(assigns) do
     BatteryStapleWeb.PageView.render("password.html", assigns)
@@ -22,11 +22,7 @@ defmodule BatteryStapleWeb.PasswordView do
     {:noreply, assign(socket, password: generate_password(value))}
   end
 
-  defp generate_password(length) when is_binary(length) do
-    BatteryStaple.PasswordGenerator.generate_password(String.to_integer(length))
-  end
-
   defp generate_password(length) do
-    BatteryStaple.PasswordGenerator.generate_password(length)
+    BatteryStaple.PasswordGenerator.generate_password(String.to_integer(length))
   end
 end

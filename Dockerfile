@@ -1,4 +1,9 @@
-FROM elixir:1.9.1-alpine as build
+ARG ELIXIR_VERSION=1.9.1-alpine
+ARG ALPINE_VERSION=3.9
+
+###################################################################
+
+FROM elixir:${ELIXIR_VERSION} as build
 
 # install build dependencies
 RUN apk add --update git build-base nodejs npm
@@ -35,7 +40,7 @@ RUN mix compile &&\
 ###################################################################
 
 # # prepare release image
-FROM alpine:3.9 AS app
+FROM alpine:${ALPINE_VERSION} AS app
 RUN apk add --update bash
 
 RUN mkdir /app

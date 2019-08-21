@@ -8,7 +8,6 @@ defmodule BatteryStapleWeb.PasswordView do
     BatteryStapleWeb.PageView.render("password.html", assigns)
   end
 
-
   def mount(_session, socket) do
     Logger.debug("Socket connected: #{connected?(socket)}")
 
@@ -19,10 +18,9 @@ defmodule BatteryStapleWeb.PasswordView do
     {:noreply, assign(socket, password: generate_password(length), length: length)}
   end
 
- def handle_event("gen_passwd", value, socket) do
+  def handle_event("gen_passwd", value, socket) do
     {:noreply, assign(socket, password: generate_password(value))}
   end
-
 
   defp generate_password(length) when is_binary(length) do
     BatteryStaple.PasswordGenerator.generate_password(String.to_integer(length))

@@ -1,4 +1,4 @@
-defmodule BatteryStappleWeb.PasswordView do
+defmodule BatteryStapleWeb.PasswordView do
   require Logger
   use Phoenix.LiveView
 

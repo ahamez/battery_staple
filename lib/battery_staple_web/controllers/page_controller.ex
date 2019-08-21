@@ -3,6 +3,6 @@ defmodule BatteryStapleWeb.PageController do
   alias Phoenix.LiveView
 
   def index(conn, _) do
-    LiveView.Controller.live_render(conn, BatteryStappleWeb.PasswordView, session: %{})
+    LiveView.Controller.live_render(conn, BatteryStapleWeb.PasswordView, session: %{})
   end
 end
